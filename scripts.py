@@ -196,3 +196,297 @@ if __name__ == '__main__':
 
     print(hash(create_tuple(integer_list)))
 
+
+# Practice > Python > Strings > sWAP cASE
+
+def swap_case(s):
+    a=""
+    for i in s:
+        if i.isupper():
+            a+=i.lower()
+        else:
+            a+=i.upper()
+    return a
+
+
+# Practice > Python > Strings > String Split and Join
+
+def split_and_join(line):
+    return "-".join(line.split())
+
+
+# Practice > Python > Strings > What's Your Name?
+
+def print_full_name(a, b):
+    print "Hello "+a+" "+b+"! You just delved into python."
+    
+
+# Practice > Python > Strings > Mutations
+
+def mutate_string(string, position, character):
+    return string[:position]+character+string[position+1:]
+
+
+# Practice > Python > Strings > Find a string
+
+def count_substring(string, sub_string):
+    a=0
+    for i in range(len(string)-len(sub_string)+1):
+        if (string[i:i+len(sub_string)]==sub_string):
+            a+=1
+    return a
+
+
+# Practice > Python > Strings > String Validators
+
+if __name__ == '__main__':
+    s = raw_input()
+
+    def anyalnum(string):
+        for i in string:
+            if i.isalnum():
+                return True
+        return False
+    print(anyalnum(s))
+
+    def anyalpha(string):
+        for i in string:
+            if i.isalpha():
+                return True
+        return False
+    print(anyalpha(s))
+
+    def anydigit(string):
+        for i in string:
+            if i.isdigit():
+                return True
+        return False
+    print(anydigit(s))
+
+    def anylower(string):
+        for i in string:
+            if i.islower():
+                return True
+        return False
+    print(anylower(s))
+
+    def anyupper(string):
+        for i in string:
+            if i.isupper():
+                return True
+        return False
+    print(anyupper(s))
+
+
+# Practice > Python > Strings > Text Alignment
+
+#Replace all ______ with rjust, ljust or center. 
+
+thickness = int(input()) #This must be an odd number
+c = 'H'
+
+#Top Cone
+for i in range(thickness):
+    print((c*i).rjust(thickness-1)+c+(c*i).ljust(thickness-1))
+
+#Top Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))
+
+#Middle Belt
+for i in range((thickness+1)//2):
+    print((c*thickness*5).center(thickness*6))    
+
+#Bottom Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))    
+
+#Bottom Cone
+for i in range(thickness):
+    print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
+
+
+# Practice > Python > Strings > Text Wrap
+
+def wrap(string, max_width):
+    a = ''
+    for i in range(len(string)):
+        if (i%max_width==0 and i!=0):
+            a+='\n'
+            a+=string[i]
+        else:
+            a+=string[i]
+    return a
+
+
+# Practice > Python > Strings > Designer Door Mat
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+a='.|.'
+b=raw_input().split()
+n=int(b[0])
+m=int(b[1])
+
+for i in range(1,(n//2)+1):
+    s='-'*((m-3*(i*2-1))/2)
+    print(s+a*(i*2-1)+s)
+
+s='-'*((m-7)/2)
+print(s+'WELCOME'+s)
+
+for i in range((n//2)+2,n+1):
+    j=n-i+1
+    s='-'*((m-3*(j*2-1))/2)
+    print(s+a*(j*2-1)+s)
+
+    
+# Practice > Python > Strings > String Formatting
+
+def print_formatted(number):
+    # your code goes here
+
+    def binaryy(n):
+        a=""
+        while (n!=0):
+            if (n%2==0):
+                a = '0'+a
+            else:
+                a = '1'+a
+            n=n//2
+        return a
+
+    def blen(n):
+        return len(binaryy(n))
+
+    def octall(n):
+        a=""
+        while (n!=0):
+            if (n%8==0):
+                a = '0'+a
+            else:
+                a = str(n%8)+a
+            n=n//8
+        return a
+
+    def hexx(n):
+        a=""
+        while (n!=0):
+            if (n%16==0):
+                a = '0'+a
+            elif (n%16==10):
+                a = 'A'+a
+            elif (n%16==11):
+                a = 'B'+a
+            elif (n%16==12):
+                a = 'C'+a
+            elif (n%16==13):
+                a = 'D'+a
+            elif (n%16==14):
+                a = 'E'+a
+            elif (n%16==15):
+                a = 'F'+a
+            else:
+                a = str(n%16)+a
+            n=n//16
+        return a
+
+    for i in range(1,number+1):
+        s=""
+        s+=(blen(number)-len(str(i)))*" "+str(i)
+        s+=(1+blen(number)-len(octall(i)))*" "+octall(i)
+        s+=(1+blen(number)-len(hexx(i)))*" "+hexx(i)
+        s+=(1+blen(number)-blen(i))*" "+binaryy(i)
+        print(s)
+
+    return 
+
+
+# Practice > Python > Strings > Alphabet Rangoli
+
+def print_rangoli(size):
+    # your code goes here
+    
+    def build_rangoli(n):
+        if n==1:
+            return ['a']
+        else:
+            l=build_rangoli(n-1)
+            b=[]
+            b.append(chr(n+96))
+            for e in l:
+                b.append(chr(n+96)+"-"+e+"-"+chr(n+96))
+            b.append(chr(n+96))
+            return b
+
+    for i in build_rangoli(size):
+        c=(size*4-3-len(i))/2
+        print("-"*c+i+"-"*c)
+    
+    return
+
+
+# Practice > Python > Strings > Capitalize!
+
+# Complete the solve function below.
+def solve(s):
+    b=''
+    if s[0].islower():
+        b+=s[0].upper()
+    else:
+        b+=s[0]
+    for i in range(1,len(s)):
+        if s[i-1]==' ' and s[i].islower():
+            b+=s[i].upper()
+        else:
+            b+=s[i]
+            
+    return b
+
+
+# Practice > Python > Strings > The Minion Game
+
+def minion_game(string):
+    # your code goes here
+
+    def kevin(s):
+        a=0
+        for i in range(len(s)):
+            if s[i] in 'AEIOU':
+                a+=(len(s)-i)
+        return a
+
+    def stuart(s):
+        a=0
+        for i in range(len(s)):
+            if s[i] not in 'AEIOU':
+                a+=(len(s)-i)
+        return a
+
+    if (kevin(string)==stuart(string)):
+        print("Draw")
+    elif kevin(string)>stuart(string):
+        print("Kevin "+str(kevin(string)))
+    else:
+        print("Stuart "+str(stuart(string)))
+    return
+
+
+# Practice > Python > Strings > Merge the Tools!
+
+def merge_the_tools(string, k):
+    # your code goes here
+
+    def uniquee(s):
+        a=""
+        for c in s:
+            if c not in a:
+                a+=c
+        return a
+
+    l=[]
+    for i in range(len(string)/k):
+        l.append(string[i*k:(i+1)*k])
+    for e in l:
+        print(uniquee(e))
+    
+    return
