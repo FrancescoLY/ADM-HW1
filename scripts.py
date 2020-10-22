@@ -1588,6 +1588,70 @@ for i in l:
 print(s1+s4[0:(len(s4)-1)]+s3)
 
 
+# Practice > Python > XML > XML 1 - Find the Score
+
+def get_attr_number(node):
+    a=len(node.attrib)
+    for child in node:
+        if len(child)==0:
+            a+=len(child.attrib)
+        else:
+            a+=get_attr_number(child)
+    return a
+    # your code goes here
 
 
+# Practice > Python > XML > XML2 - Find the Maximum Depth
 
+maxdepth = 0
+def depth(elem, level):
+    global maxdepth
+    if len(elem)==0:
+        maxdepth = max(maxdepth,level+1)
+    else:
+        for child in elem:
+            depth(child, level+1)
+
+    # your code goes here
+
+    
+# Practice > Python > Closures and Decorators > Standardize Mobile Number Using Decorators
+
+def wrapper(f):
+    def fun(l):
+        l2=[]
+        for i in l:
+            l2.append(int(i[(len(i)-10):]))
+        l2.sort()
+        for i in l2:
+            print('+91 '+str(i)[0:5]+' '+str(i)[5:10])
+        # complete the function
+    return fun
+
+
+# Practice > Python > Closures and Decorators > Decorators 2 - Name Directory
+
+def person_lister(f):
+    def inner(people):
+        d = []
+        #print(people)
+        for i in people:
+            d.append(int(i[2]))
+        d.sort()
+        #print(d)
+        b=[]
+        while len(d)>0:
+            a=min(d)
+            for i in people:
+                if int(i[2])==a:
+                    if i[3]=='M':
+                        b.append('Mr. '+i[0]+' '+i[1])
+                    elif i[3]=='F':
+                        b.append('Ms. '+i[0]+' '+i[1])
+                    #b.append(str(i))
+                    d.remove(a)
+                    people.remove(i)
+                    break
+        return b
+        # complete the function
+    return inner
