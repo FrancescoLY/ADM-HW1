@@ -952,3 +952,642 @@ for i in range(n):
         print('No')
     else:
         print('Yes')
+
+        
+# Practice > Python > Date and Time > Calendar Module
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import calendar
+
+l=map(int,raw_input().split())
+n = calendar.weekday(l[2], l[0], l[1])
+
+if (n==0):
+    print('MONDAY')
+elif (n==1):
+    print('TUESDAY')
+elif (n==2):
+    print('WEDNESDAY')
+elif (n==3):
+    print('THURSDAY')
+elif (n==4):
+    print('FRIDAY')
+elif (n==5):
+    print('SATURDAY')
+elif (n==6):
+    print('SUNDAY')
+
+    
+# Practice > Python > Date and Time > Time Delta
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import datetime
+n = int(raw_input())
+
+def monnum(s):
+    if (s=='Jan'):
+        return 1
+    elif (s=='Feb'):
+        return 2
+    elif (s=='Mar'):
+        return 3
+    elif (s=='Apr'):
+        return 4
+    elif (s=='May'):
+        return 5
+    elif (s=='Jun'):
+        return 6
+    elif (s=='Jul'):
+        return 7
+    elif (s=='Aug'):
+        return 8
+    elif (s=='Sep'):
+        return 9
+    elif (s=='Oct'):
+        return 10
+    elif (s=='Nov'):
+        return 11
+    elif (s=='Dec'):
+        return 12
+
+for i in range(n):
+    l1=raw_input().split()
+    c1=[l1[1], monnum(l1[2]), l1[3]]
+    c1.extend(l1[4].split(':'))
+    d1 = map(int,c1)
+    l2=raw_input().split()
+    c2=[l2[1], monnum(l2[2]), l2[3]]
+    c2.extend(l2[4].split(':'))
+    d2 = map(int,c2)
+    a=datetime.datetime(d1[2],d1[1],d1[0],d1[3],d1[4],d1[5])
+    b=datetime.datetime(d2[2],d2[1],d2[0],d2[3],d2[4],d2[5])
+    t1=a-b
+    t2=0
+    if l1[5][0]=='-':
+        t2+=int(l1[5][1:3])*3600
+        t2+=int(l1[5][3:5])*60
+    elif l1[5][0]=='+':
+        t2-=int(l1[5][1:3])*3600
+        t2-=int(l1[5][3:5])*60
+    if l2[5][0]=='-':
+        t2-=int(l2[5][1:3])*3600
+        t2-=int(l2[5][3:5])*60
+    elif l2[5][0]=='+':
+        t2+=int(l2[5][1:3])*3600
+        t2+=int(l2[5][3:5])*60
+    print(abs(t1.days*86400+t1.seconds+t2))
+    
+    
+# Practice > Python > Errors and Exceptions > Exceptions
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+n = int(raw_input())
+
+for i in range(n):
+    s = raw_input().split()
+    try:
+        a = int(s[0])
+        b = int(s[1])
+    except ValueError as e:
+        print "Error Code:", e
+        continue
+    try:
+        print(a/b)
+    except ZeroDivisionError as e:
+        print "Error Code:",e
+        
+        
+# Practice > Python > Built-Ins > ginortS
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+s = raw_input()
+
+ll = []
+for i in s:
+    if i.islower():
+        ll.append(i)
+ll.sort()
+lls=''
+for i in ll:
+    lls+=i
+
+ul = []
+for i in s:
+    if i.isupper():
+        ul.append(i)
+ul.sort()
+uls=''
+for i in ul:
+    uls+=i
+
+od = []
+for i in s:
+    if i.isdigit() and int(i)%2==1:
+        od.append(i)
+od.sort()
+ods=''
+for i in od:
+    ods+=i
+
+ed = []
+for i in s:
+    if i.isdigit() and int(i)%2==0:
+        ed.append(i)
+ed.sort()
+eds=''
+for i in ed:
+    eds+=i
+
+print(lls+uls+ods+eds)
+
+
+# Practice > Python > Built-Ins > Athlete Sort
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from collections import OrderedDict
+
+a = map(int,raw_input().split())
+l=[]
+d=OrderedDict()
+
+for i in range(a[0]):
+    c=raw_input().split()
+    l.append(c)
+
+k = int(raw_input())
+
+for i in l:
+    if i[k] not in d:
+        d[i[k]]=[i]
+    else:
+        d[i[k]].append(i)
+
+b = map(int,d.keys())
+b.sort()
+
+#print(b)
+
+for i in b:
+    for j in d[str(i)]:
+        s = ''
+        for m in j:
+            s+=' '
+            s+=m
+        print(s[1:])
+        
+        
+# Practice > Python > Built-Ins > Zipped!
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+a = raw_input().split()
+n = int(a[1])
+l = []
+
+for i in range(n):
+    l.append(raw_input().split())
+
+b = zip(*l)
+#print(b)
+
+for e in b:
+    c = 0.0
+    for i in range(n):
+        c+=float(e[i])
+    print(round(c/n,1))
+    
+    
+# Practice > Python > Python Functionals > Map and Lambda Function
+
+cube = lambda x:x*x*x # complete the lambda function 
+
+def fibonacci(n):
+    if n==0:
+        return []
+    if n==1:
+        return [0]
+    elif n==2:
+        return [0,1]
+    else:
+        f = fibonacci(n-1)
+        #print(f)
+        f.append(f[len(f)-1]+f[len(f)-2])
+        return f
+    # return a list of fibonacci numbers
+    
+    
+# Practice > Python > Regex and Parsing > Detect Floating Point Number
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import re
+n = int(raw_input())
+
+for i in range(n):
+    f=0
+    s = raw_input()
+    if bool(re.match(r"[+-]?[0-9]*[.][0-9]+",s))==False:
+        f=1
+    else:
+        if bool(re.match(r"[+-]?[0-9]*[.][0-9]+[.]",s))==True:
+            f=1
+        else:
+            try:
+                float(s)
+            except:
+                f=1
+    if (f==0):
+        print(True)
+    else:
+        print(False)
+        
+        
+# Practice > Python > Regex and Parsing > Re.split()
+
+#regex_pattern = r"[[0-9]+[.,]]*[0-9]+"	# Do not delete 'r'.
+regex_pattern = r"[.,]"
+
+
+# Practice > Python > Regex and Parsing > Group(), Groups() & Groupdict()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import re
+s = raw_input()
+c = ''
+
+for i in s:
+    if (i.isalnum()):
+        if bool(re.search(i*2,s))==True:
+            c=i
+            break
+            #print('ok')
+
+#print(c)
+
+if (c==''):
+    print(-1)
+else:
+    print(c)
+    
+    
+# Practice > Python > Regex and Parsing > Re.findall() & Re.finditer()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import re
+s = raw_input()
+
+#b = r'[QWRTYPSDFGHJKLZXCVBNMqwrtypsdfghjklzxcvbnm][AEIOUaeiou]+[QWRTYPSDFGHJKLZXCVBNMqwrtypsdfghjklzxcvbnm]([AEIOUaeiou]+[QWRTYPSDFGHJKLZXCVBNMqwrtypsdfghjklzxcvbnm])*'
+
+a = re.finditer(r'[AEIOUaeiou]{2,}',s)
+#print(a)
+
+s2=' '+s+' '
+r= 'QWRTYPSDFGHJKLZXCVBNMqwrtypsdfghjklzxcvbnm'
+
+f=0
+for e in a:
+    i=e.start()+1
+    j=e.end()+1
+    #print(i,j)
+    if s2[i-1] in r and s2[j] in r:
+        f=1
+        print(s2[i:j])
+
+if (f==0):
+    print(-1)
+    
+    
+# Practice > Python > Regex and Parsing > Re.start() & Re.end()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import re
+s = raw_input()
+k = raw_input()
+f=0
+i=0
+
+while len(s)>=len(k):
+    c = re.search(k,s)
+    if bool(c)==True:
+        b = c.start()
+        print((b+i,c.end()+i-1))
+        s=s[b+1:]
+        f=1
+        i+=b+1
+    else:
+        break
+
+if (f==0):
+    print((-1,-1))
+    
+    
+# Practice > Python > Regex and Parsing > Regex Substitution
+    
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import re
+n = int(raw_input())
+def func(match):
+    if s[match.start()-1]==' ' and s[match.end()]==' ':
+        if (match.group())=='&&':
+            return 'and'
+        else:
+            return 'or'
+    else:
+        return match.group()
+
+
+for i in range(n):
+    s=raw_input()
+    print re.sub(r'(&&)|(\|\|)', func, s)
+    
+    
+# Practice > Python > Regex and Parsing > Validating Roman Numerals
+
+m='(M{1,3})'
+a='(CM|(D(C){1,3})|((C){1,3}(D)?))'
+b='(XC|(L(X){1,3})|((X){1,3}(L)?))'
+c='(IX|(V(I){1,3})|((I){1,3}(V)?))'
+
+r1='('+m+'?'+a+'?'+b+'?'+c+')'
+r2='('+m+'?'+a+'?'+b+c+'?'+')'
+r3='('+m+'?'+a+b+'?'+c+'?'+')'
+r4='('+m+a+'?'+b+'?'+c+'?'+')'
+
+regex_pattern = r""+'('+r1+'|'+r2+'|'+r3+'|'+r4+')'+'\Z'    # Do not delete 'r'.
+
+'''
+m='(M{1,3})'
+a='(D{0,1}C{1,4})'
+b='(L{0,1}X{1,4})'
+c='(V{0,1}I{1,4})'
+
+r1='('+m+'?'+a+'?'+b+'?'+c+')'
+r2='('+m+'?'+a+'?'+b+c+'?'+')'
+r3='('+m+'?'+a+b+'?'+c+'?'+')'
+r4='('+m+a+'?'+b+'?'+c+'?'+')'
+regex_pattern = r""+r1+'|'+r2+'|'+r3+'|'+r4    # Do not delete 'r'.
+'''
+
+
+# Practice > Python > Regex and Parsing > Validating phone numbers
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import re
+n = int(raw_input())
+
+for i in range(n):
+    s = raw_input()
+    if bool(re.match(r'[789][0-9]{9}\Z',s))==True:
+        print('YES')
+    else:
+        print('NO')
+        
+        
+# Practice > Python > Regex and Parsing > Validating and Parsing Email Addresses
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import re
+import email.utils
+
+n = int(raw_input())
+for i in range(n):
+    s = raw_input()
+    e = email.utils.parseaddr(s)
+    if bool(re.match(r'[a-zA-Z][a-zA-Z0-9-._]*@[a-zA-Z]+\.[a-zA-Z]{1,3}\Z',e[1]))==True:
+        print(email.utils.formataddr(e))
+        
+        
+# Practice > Python > Regex and Parsing > Hex Color Code
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import re
+
+n = int(raw_input())
+f=0
+for i in range(n):
+    s = raw_input()
+    if ('}' in s):
+        f=0
+    if f==1:
+        a = re.finditer(r'(#[a-fA-F0-9]{6})|(#[a-fA-F0-9]{3})',s)
+        for e in a:
+            print(e.group())
+    if ('{' in s):
+        f=1
+        
+        
+# Practice > Python > Regex and Parsing > HTML Parser - Part 1
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from HTMLParser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print "Start :", tag
+        for e in attrs:
+            print '-> ' + e[0] + ' > ' + str(e[1])
+    def handle_endtag(self, tag):
+        print "End   :", tag
+    def handle_startendtag(self, tag, attrs):
+        print "Empty :", tag
+        for e in attrs:
+            print '-> ' + e[0] + ' > ' + str(e[1])
+
+parser = MyHTMLParser()
+
+n = int(raw_input())
+
+for i in range(n):
+    s = raw_input()
+    parser.feed(s)
+    
+    
+# Practice > Python > Regex and Parsing > HTML Parser - Part 2
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from HTMLParser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    def handle_comment(self, data):
+        a = data.split('\n')
+        if len(a)>1:
+            print('>>> Multi-line Comment')
+            for e in data.split('\n'):
+                print(e)
+        else:
+            print('>>> Single-line Comment')
+            print(data)
+    def handle_data(self, data):
+        a = data.split('\n')
+        if (a!=['','']):
+            print('>>> Data')
+            for e in a:
+                print(e)
+
+parser = MyHTMLParser()
+
+n = int(raw_input())
+
+for i in range(n):
+    s = raw_input()
+    parser.feed(s+'\n')
+    
+    
+# Practice > Python > Regex and Parsing > Detect HTML Tags, Attributes and Attribute Values
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from HTMLParser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print tag
+        for e in attrs:
+            print '-> ' + e[0] + ' > ' + str(e[1])
+    def handle_startendtag(self, tag, attrs):
+        print tag
+        for e in attrs:
+            print '-> ' + e[0] + ' > ' + str(e[1])
+
+parser = MyHTMLParser()
+
+n = int(raw_input())
+
+for i in range(n):
+    s = raw_input()
+    parser.feed(s)
+    
+    
+# Practice > Python > Regex and Parsing > Validating UID 
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import re
+
+n = int(raw_input())
+
+for i in range(n):
+    s = raw_input()
+    if (bool(re.match(r'[a-zA-Z0-9]{10}',s))==False):
+        print('Invalid')
+        #print(1)
+        continue
+    if len(re.findall(r'[A-Z]',s))<2:
+        print('Invalid')
+        #print(2)
+        continue
+    if len(re.findall(r'[0-9]',s))<3:
+        print('Invalid')
+        continue
+    f = 0
+    for c in s:
+        if len(re.findall(c,s))>1:
+            f = 1
+            break;
+    if (f==1):
+        print('Invalid')
+        continue
+    print('Valid')
+    
+    
+# Practice > Python > Regex and Parsing > Validating Credit Card Numbers
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import re
+
+n = int(raw_input())
+
+for i in range(n):
+    s = raw_input()
+    if bool(re.match(r'([456][0-9]{15}\Z)|([456][0-9]{3}(-[0-9]{4}){3}\Z)',s))==False :
+        print('Invalid')
+        continue
+    l = s.split('-')
+    s2=''
+    a = '(0000)|(1111)|(2222)|(3333)|(4444)|'
+    b = '(5555)|(6666)|(7777)|(8888)|(9999)'
+    for e in l:
+        s2+=e
+    if bool(re.search(r''+a+b,s2))==True :
+        print('Invalid')
+        continue
+    print('Valid')
+    
+    
+# Practice > Python > Regex and Parsing > Matrix Script
+
+#!/bin/python
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+
+first_multiple_input = raw_input().rstrip().split()
+
+n = int(first_multiple_input[0])
+
+m = int(first_multiple_input[1])
+
+matrix = []
+
+for _ in xrange(n):
+    matrix_item = raw_input()
+    matrix.append(matrix_item)
+
+#print(matrix)
+
+s = ''
+for i in range(m):
+    for j in matrix:
+        s+=j[i]
+
+#print(s)
+
+c = len(s)
+
+a=0
+while a<c and s[a]in'!@#$%& ':
+    a+=1
+
+b=c
+#b=max(c-1,a)
+#while b>0 and s[b]in'!@#$%& ':
+while b-1>=a and s[b-1]in'!@#$%& ':
+    b-=1
+
+s1=s[0:a]
+s3=s[b:c]
+s2=s[a:b]
+
+s4=''
+l = re.findall(r'[a-zA-Z0-9]+',s2)
+for i in l:
+    s4+=i
+    s4+=' '
+
+print(s1+s4[0:(len(s4)-1)]+s3)
+
+
+
+
+
