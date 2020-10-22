@@ -490,3 +490,249 @@ def merge_the_tools(string, k):
         print(uniquee(e))
     
     return
+
+
+# Practice > Python > Sets > Introduction to Sets
+
+def average(array):
+    a = set(array)
+    return sum(a)/len(a)
+    # your code goes here
+    
+    
+# Practice > Python > Sets > No Idea!
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+c = raw_input()
+l = raw_input().split()
+a = set(raw_input().split())
+b = set(raw_input().split())
+
+h = 0
+
+for e in l:
+    if e in a:
+        h += 1
+    if e in b:
+        h -= 1
+
+print(h)
+
+
+# Practice > Python > Sets > Symmetric Difference
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+m = raw_input()
+ml = raw_input()
+ml2 = ml.split()
+ms = set(ml2)
+n = raw_input()
+nl = raw_input()
+nl2 = nl.split()
+ns = set(nl2)
+
+r = ms.union(ns).difference(ms.intersection(ns))
+
+rl=[]
+for e in r:
+    rl.append(e)
+
+rl2=list(map(int, rl))
+rl2.sort()
+
+for e in rl2:
+    print(e)
+    
+    
+# Practice > Python > Sets > Set .add()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n = int(raw_input())
+s = set()
+
+for i in range(n):
+    a = raw_input()
+    s.add(a)
+
+print(len(s))
+
+
+# Practice > Python > Sets > Set .discard(), .remove() & .pop()
+
+n = input()
+s = set(map(int, raw_input().split()))
+
+#s = set(map(int,l))
+#print(s)
+N = int(raw_input())
+for i in range(N):
+    a = raw_input().split() 
+    if len(a)>1:
+        b = a[1]
+    if a[0]=='pop' and len(s)>0:
+        s.pop()
+    elif a[0]=='discard':
+        #print(int(b))
+        s.discard(int(b))
+    elif a[0]=='remove' and int(b) in s:
+        #print(int(b))
+        s.remove(int(b))
+    #print(a[0],s)
+
+print(sum(s))
+
+
+# Practice > Python > Sets > Set .union() Operation
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n = raw_input()
+eng = set(raw_input().split())
+f = raw_input()
+fre = set(raw_input().split())
+
+print(len(eng | fre))
+
+
+# Practice > Python > Sets > Set .intersection() Operation
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+n = raw_input()
+eng = set(raw_input().split())
+f = raw_input()
+fre = set(raw_input().split())
+
+print(len(eng & fre))
+
+
+# Practice > Python > Sets > Set .difference() Operation
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+n = raw_input()
+eng = set(raw_input().split())
+f = raw_input()
+fre = set(raw_input().split())
+
+print(len(eng - fre))
+
+
+# Practice > Python > Sets > Set .symmetric_difference() Operation
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+n = raw_input()
+eng = set(raw_input().split())
+f = raw_input()
+fre = set(raw_input().split())
+
+print(len(eng ^ fre))
+
+
+# Practice > Python > Sets > Set Mutations
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+a = raw_input()
+l1 = raw_input().split()
+s1 = set(map(int,l1))
+b = int(raw_input())
+
+for i in range(b):
+    c = raw_input()
+    com = c.split()[0]
+    l2 = raw_input().split()
+    s2 = set(map(int,l2))
+    if (com=='intersection_update'):
+        s1 &= s2
+    elif (com=='symmetric_difference_update'):
+        s1 ^= s2
+    elif (com=='difference_update'):
+        s1 -= s2
+    elif (com=='update'):
+        s1 |= s2
+
+print(sum(s1))
+
+
+# Practice > Python > Sets > The Captain's Room
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+"""
+k = raw_input()
+l = raw_input().split()
+s = set(enumerate(map(int,l)))
+
+a = set()
+b = set()
+for i in s:
+    if i[1] in a:
+        b |= {i[1]}
+    else:
+        a |= {i[1]}
+
+print((a-b).pop())
+"""
+
+k = raw_input()
+l = raw_input().split()
+
+a = set()
+b = set()
+for i in l:
+    if i in a:
+        b |= {i}
+    else:
+        a |= {i}
+
+print((a-b).pop())
+
+
+# Practice > Python > Sets > Check Subset
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+t = int(raw_input())
+
+for i in range(t):
+
+    sc = set()
+    a = int(raw_input())
+    la = raw_input().split()
+    sa = set(la)
+    a = int(raw_input())
+    lb = raw_input().split()
+    sb = set(lb)
+    
+    for c in sa:
+        if c not in sb:
+            sc |= {c}
+    
+    if len(sc)==0:
+        print(True)
+    else:
+        print(False)
+        
+        
+# Practice > Python > Sets > Check Strict Superset
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+a = 0
+l1 = raw_input().split()
+s1 = set(l1)
+n = int(raw_input())
+
+for i in range(n):
+    l2 = raw_input().split()
+    s2 = set(l2)
+    for i in s2:
+        if i not in s1:
+            a+=1
+            break
+    if len(s2)==len(s1):
+        a+=1
+
+if a==0:
+    print(True)
+else:
+    print(False)
