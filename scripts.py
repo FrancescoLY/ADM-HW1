@@ -1655,3 +1655,264 @@ def person_lister(f):
         return b
         # complete the function
     return inner
+
+
+# Practice > Python > Numpy > Arrays
+
+def arrays(arr):
+    b=map(float,arr)
+    #print(b)
+    b.reverse()
+    return numpy.array(b,float)
+    # complete this function
+    # use numpy.array
+
+
+# Practice > Python > Numpy > Shape and Reshape
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import numpy
+
+l = raw_input().split()
+n = map(int,l)
+
+a = numpy.array(n,int)
+print numpy.reshape(a, (3,3))
+
+
+# Practice > Python > Numpy > Transpose and Flatten
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import numpy
+
+n = map(int,raw_input().split())[0]
+l=[]
+
+for i in range(n):
+    l.append(map(int,raw_input().split()))
+
+a = numpy.array(l)
+print numpy.transpose(a)
+print a.flatten()
+
+
+# Practice > Python > Numpy > Concatenate
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import numpy
+
+l = map(int,raw_input().split())
+n = l[0]
+m = l[1]
+a=[]
+b=[]
+
+for i in range(n):
+    a.append(map(int,raw_input().split()))
+
+for i in range(m):
+    b.append(map(int,raw_input().split()))
+
+aa = numpy.array(a,int)
+ab = numpy.array(b,int)
+print numpy.concatenate((aa, ab), axis = 0)  
+
+
+# Practice > Python > Numpy > Zeros and Ones
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import numpy
+
+s = map(int, raw_input().split())
+print(numpy.zeros(s, dtype = numpy.int))
+print(numpy.ones(s, dtype = numpy.int))
+
+
+# Practice > Python > Numpy > Eye and Identity
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import numpy
+numpy.set_printoptions(sign=' ')
+
+l = map(int,raw_input().split())
+#print l
+print(numpy.eye(l[0], l[1], k = 0))
+
+
+# Practice > Python > Numpy > Array Mathematics
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import numpy
+
+n = map(int,raw_input().split())[0]
+a=[]
+b=[]
+
+for i in range(n):
+    a.append(map(int,raw_input().split()))
+
+for i in range(n):
+    b.append(map(int,raw_input().split()))
+
+aa = numpy.array(a)
+bb = numpy.array(b)
+
+print(aa+bb)
+print(aa-bb)
+print(aa*bb)
+print(aa/bb)
+print(aa%bb)
+print(aa**bb)
+
+
+# Practice > Python > Numpy > Floor, Ceil and Rint
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import numpy
+numpy.set_printoptions(sign=' ')
+
+l = map(float,raw_input().split())
+a = numpy.array(l, float)
+
+print(numpy.floor(a))
+print(numpy.ceil(a))
+print(numpy.rint(a))
+
+
+# Practice > Python > Numpy > Sum and Prod
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import numpy
+
+l = map(int,raw_input().split())
+n = l[0]
+la=[]
+
+for i in range(n):
+    la.append(map(int,raw_input().split()))
+
+aa = numpy.array(la)
+print(numpy.prod(numpy.sum(aa,axis=0)))
+
+
+# Practice > Python > Numpy > Min and Max
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import numpy
+
+l = map(int,raw_input().split())
+n = l[0]
+la=[]
+
+for i in range(n):
+    la.append(map(int,raw_input().split()))
+
+aa = numpy.array(la)
+print(numpy.max(numpy.min(aa,axis=1)))
+
+
+# Practice > Python > Numpy > Mean, Var, and Std
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import numpy
+numpy.set_printoptions(sign=' ')
+
+l = map(int,raw_input().split())
+n = l[0]
+la=[]
+
+for i in range(n):
+    la.append(map(int,raw_input().split()))
+
+aa = numpy.array(la)
+print(numpy.mean(aa,axis=1))
+print(numpy.var(aa,axis=0))
+print(round(numpy.std(aa),12))
+
+
+# Practice > Python > Numpy > Dot and Cross
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import numpy
+
+n = int(raw_input())
+la=[]
+lb=[]
+
+for i in range(n):
+    la.append(map(int,raw_input().split()))
+
+for i in range(n):
+    lb.append(map(int,raw_input().split()))
+
+aa=numpy.array(la)
+ab=numpy.transpose(numpy.array(lb))
+
+#print(aa)
+#print(ab)
+
+m = []
+for i in range(n):
+    for j in range(n):
+        m.append(numpy.dot(aa[i],ab[j]))
+
+am = numpy.array(m)
+
+print numpy.reshape(am,(n,n))
+
+
+# Practice > Python > Numpy > Inner and Outer
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import numpy
+
+la = map(int,raw_input().split())
+lb = map(int,raw_input().split())
+aa = numpy.array(la)
+ab = numpy.array(lb)
+
+print(numpy.inner(aa,ab))
+print(numpy.outer(aa,ab))
+
+
+# Practice > Python > Numpy > Polynomials
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import numpy
+
+la = map(float,raw_input().split())
+aa = numpy.array(la)
+v = int(raw_input())
+
+print(numpy.polyval(aa,v))
+
+
+# Practice > Python > Numpy > Linear Algebra
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import numpy
+
+n = int(raw_input())
+l=[]
+
+for i in range(n):
+    l.append(map(float,raw_input().split()))
+
+a = numpy.array(l)
+
+print(round(numpy.linalg.det(a),2))
+
+
+
+
