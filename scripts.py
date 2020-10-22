@@ -736,3 +736,219 @@ if a==0:
     print(True)
 else:
     print(False)
+
+
+# Practice > Python > Collections > collections.Counter()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from collections import Counter
+
+a = raw_input()
+b = Counter(map(int,raw_input().split()))
+c = int(raw_input())
+e = 0
+
+for i in range(c):
+    d = map(int,raw_input().split())
+    if (b[d[0]]>0):
+        e += d[1]
+        b[d[0]]-=1
+
+print(e)
+
+
+# Practice > Python > Collections > DefaultDict Tutorial
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from collections import defaultdict
+
+a = map(int,raw_input().split())
+d = defaultdict(list)
+
+for i in range(1,a[0]+1):
+    b = raw_input()
+    d[b].append(str(i))
+
+for j in range(a[1]):
+    c = raw_input()
+    if d[c]==[]:
+        print('-1')
+    else:
+        e=''
+        for i in d[c]:
+            e+=i
+            e+=' '
+        print(e)
+        
+        
+# Practice > Python > Collections > Collections.namedtuple()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from collections import namedtuple
+n = int(input())
+Student = namedtuple('Student',input())
+t = 0
+for i in range(n):
+    l = input().split()
+    s1 = Student(l[0],l[1],l[2],l[3])
+    t += int(s1.MARKS)
+
+#print("{:.2f}".format(t/n))
+print(round(t/n,2))
+
+
+# Practice > Python > Collections > Collections.OrderedDict()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from collections import OrderedDict
+a = OrderedDict()
+n = int(raw_input())
+
+for i in range(n):
+    b = raw_input().split()
+    pname = b[0]
+    for j in range(1,len(b)-1):
+        pname += ' '
+        pname += b[j]
+    if pname in a:
+        a[pname]+=int(b[len(b)-1])
+    else:
+        a[pname]=int(b[len(b)-1])
+
+for i in a:
+    print(i+' '+str(a[i]))
+    
+    
+# Practice > Python > Collections > Word Order
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from collections import OrderedDict
+
+a = OrderedDict()
+n = int(raw_input())
+
+for i in range(n):
+    b = raw_input()
+    if b in a:
+        a[b]+=1
+    else:
+        a[b]=1
+
+print(len(a.keys()))
+
+c = ''
+for i in a:
+    c+=' '
+    c+=str(a[i])
+
+print(c[1:])
+
+
+# Practice > Python > Collections > Collections.deque()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from collections import deque
+
+d = deque()
+n = int(raw_input())
+
+for i in range(n):
+    a = raw_input().split()
+    if a[0]=='pop':
+        d.pop()
+    elif a[0]=='popleft':
+        d.popleft()
+    elif a[0]=='append':
+        d.append(a[1])
+    elif a[0]=='appendleft':
+        d.appendleft(a[1])
+
+c = ''
+for i in d:
+    c+=' '
+    c+=i
+
+print(c[1:])
+
+
+# Practice > Python > Collections > Company Logo
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from collections import Counter
+from collections import OrderedDict
+
+s = raw_input()
+c = Counter(s)
+d = OrderedDict()
+
+def leastt(l):
+    a=l[0]
+    for b in l[1:]:
+        if b<a:
+            a=b
+    return a
+
+for i in c:
+    if c[i] in d:
+        d[c[i]].append(i)
+    else:
+        d[c[i]] = [i]
+
+k = d.keys()
+k.sort()
+a = 3
+b = 1
+
+#print(d)
+
+while a > 0:
+    j = len(k)-b
+    if len(d[k[j]])==1:
+        print(d[k[j]][0]+' '+str(k[j]))
+        a-=1
+        b+=1
+    else:
+        print(leastt(d[k[j]])+' '+str(k[j]))
+        d[k[j]].remove(leastt(d[k[j]]))
+        a-=1
+        
+        
+# Practice > Python > Collections > Piling Up!
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from collections import deque
+
+n = int(raw_input())
+
+for i in range(n):
+    a=raw_input()
+    d=deque(map(int,raw_input().split()))
+    l=[]
+    f = 0
+    while len(d)!=0:
+        if len(l)==0:
+            if d[0]>d[len(d)-1]:
+                l.append(d.popleft())
+            else:
+                l.append(d.pop())
+        else:
+            if max(d[0],d[len(d)-1])>l[len(l)-1]:
+                f = 1
+                break
+            else:
+                if d[0]>d[len(d)-1]:
+                    l.append(d.popleft())
+                else:
+                    l.append(d.pop())
+    if f==1:
+        print('No')
+    else:
+        print('Yes')
