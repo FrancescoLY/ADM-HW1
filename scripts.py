@@ -1914,5 +1914,222 @@ a = numpy.array(l)
 print(round(numpy.linalg.det(a),2))
 
 
+# Practice > Algorithms > Warmup > Birthday Cake Candles
 
+#!/bin/python
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'birthdayCakeCandles' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY candles as parameter.
+#
+
+def birthdayCakeCandles(candles):
+    a = max(candles)
+    b = 0
+    for i in candles:
+        if (i==a):
+            b+=1
+    return b
+    # Write your code here
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    candles_count = int(raw_input().strip())
+
+    candles = map(int, raw_input().rstrip().split())
+
+    result = birthdayCakeCandles(candles)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+# Practice > Algorithms > Implementation > Number Line Jumps
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+l = map(int,raw_input().split())
+x1=l[0]
+x2=l[2]
+v1=l[1]
+v2=l[3]
+f=0
+
+if v2<v1:
+    while x1<=x2:
+        if x1==x2:
+            print('YES')
+            f=1
+            break
+        else:
+            x1+=v1
+            x2+=v2
+
+if (f==0):
+    print('NO')
+    
+
+# Practice > Algorithms > Implementation > Viral Advertising
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the viralAdvertising function below.
+def viralAdvertising(n):
+    d=1
+    l=2
+    c=2
+    while (d<n):
+       l=(l*3)//2
+       c+=l
+       d+=1 
+    return c
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    result = viralAdvertising(n)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+# Practice > Algorithms > Recursion > Recursive Digit Sum
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the superDigit function below.
+def superDigit(n, k):
+    s = str(n)
+    while len(s)>1:
+        c=0
+        for i in s:
+            c+=int(i)
+        s = str(c)
+    s = s*k
+    while len(s)>1:
+        c=0
+        for i in s:
+            c+=int(i)
+        s = str(c)
+    return int(s)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nk = input().split()
+
+    n = nk[0]
+
+    k = int(nk[1])
+
+    result = superDigit(n, k)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+# Practice > Algorithms > Sorting > Insertion Sort - Part 1
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the insertionSort1 function below.
+def insertionSort1(n, arr):
+    a = arr[n-1]
+    i = n-2
+    while a<arr[i] and i>=0:
+        arr[i+1]=arr[i]
+        s=''
+        for j in arr:
+            s+=str(j)
+            s+=' '
+        print(s[:len(s)-1])
+        i = i-1
+    arr[i+1]=a
+    #print(a)
+    s=''
+    for j in arr:
+        s+=str(j)
+        s+=' '
+    print(s[:len(s)-1])
+
+
+if __name__ == '__main__':
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    insertionSort1(n, arr)
+
+
+# Practice > Algorithms > Sorting > Insertion Sort - Part 2
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def insertionSort1(n, arr):
+    a = arr[n-1]
+    i = n-2
+    while a<arr[i] and i>=0:
+        arr[i+1]=arr[i]
+        i = i-1
+    arr[i+1]=a
+    return arr
+
+# Complete the insertionSort2 function below.
+def insertionSort2(n, arr):
+    a = 2
+    while a<=n:
+        arr[0:a]=insertionSort1(a, arr[0:a])
+        a+=1
+        s=''
+        for j in arr:
+            s+=str(j)
+            s+=' '
+        print(s[:len(s)-1])
+
+
+if __name__ == '__main__':
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    insertionSort2(n, arr)
 
