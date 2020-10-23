@@ -1527,8 +1527,28 @@ for i in range(n):
         print('Invalid')
         continue
     print('Valid')
+
     
-    
+# Practice > Python > Regex and Parsing > Validating Postal Codes
+
+regex_integer_in_range = r"[1-9][0-9]{5}\Z"	# Do not delete 'r'.
+
+
+r0='(0(?=[0-9]0))'
+r1='(1(?=[0-9]1))'
+r2='(2(?=[0-9]2))'
+r3='(3(?=[0-9]3))'
+r4='(4(?=[0-9]4))'
+r5='(5(?=[0-9]5))'
+r6='(6(?=[0-9]6))'
+r7='(7(?=[0-9]7))'
+r8='(8(?=[0-9]8))'
+r9='(9(?=[0-9]9))'
+
+
+regex_alternating_repetitive_digit_pair = r""+r0+'|'+r1+'|'+r2+'|'+r3+'|'+r4+'|'+r5+'|'+r6+'|'+r7+'|'+r8+'|'+r9    # Do not delete 'r'.
+
+
 # Practice > Python > Regex and Parsing > Matrix Script
 
 #!/bin/python
